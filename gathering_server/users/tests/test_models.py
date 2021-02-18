@@ -1,6 +1,6 @@
 import pytest
 
-from gathering_server.users.models import User
+from src_gather.users.models import User
 
 pytestmark = pytest.mark.django_db
 

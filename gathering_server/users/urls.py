@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
-from src_gather.users.views import SignUpView
+from gathering_server.users.views import SignUpView
 
 urlpatterns = [
     path("token/", TokenObtainPairView.as_view(), name="login"),

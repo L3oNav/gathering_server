@@ -1,8 +1,8 @@
 import pytest
 from django.test import RequestFactory
 
-from gathering_server.users.api.views import UserViewSet
-from gathering_server.users.models import User
+from src_gather.users.api.views import UserViewSet
+from src_gather.users.models import User
 
 pytestmark = pytest.mark.django_db
 

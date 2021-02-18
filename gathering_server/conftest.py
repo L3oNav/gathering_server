@@ -1,7 +1,7 @@
 import pytest
 
-from gathering_server.users.models import User
-from gathering_server.users.tests.factories import UserFactory
+from src_gather.users.models import User
+from src_gather.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

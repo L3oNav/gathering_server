@@ -3,7 +3,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 # models imports
-from src_gather.utils.models import BaseModel
+from gathering_server.utils.models import BaseModel
 
 
 class User(BaseModel, AbstractUser):

@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from src_gather.users.serializers import SignUpSerializer
+from gathering_server.users.serializers import SignUpSerializer
 
 
 class SignUpView(APIView):
