@@ -2,10 +2,9 @@ from rest_framework import serializers
 
 from gathering_server.refining.models import RefiningModel
 
-from gathering_server.utils.serializers import ResourceListField
+from gathering_server.utils.serializers import ResourceListField, PricesList
 
-from gathering_server.refining.functions import RefiningRocks
-
+from gathering_server.refining.functions import RefiningRocks, RefiningGeneral
 
 class RefiningFormatterSerializer(serializers.ModelField):
 
@@ -26,6 +25,8 @@ class RefiningCalculatorSerializer(serializers.Serializer):
 
     purchased_resources = serializers.BooleanField(default=False)
 
+    return_rate = serializers.FloatField(min_value=0, max_value=100)
+
     resources_cost = serializers.ListField(
         child=ResourceListField()
     )
@@ -35,9 +36,12 @@ class RefiningCalculatorSerializer(serializers.Serializer):
     )
 
     refining_prices = serializers.ListField(
-        child=ResourceListField()
+        child=PricesList()
     )
 
     def create(self, data):
-        refiner = RefiningRocks(data['resources_to_refining'])
-        return refiner.calculator_without_focus()
+        if data['type_of'] == 'rocks':
+            refiner = RefiningRocks(data['resources_to_refining'], return_rate=data['return_rate'])
+        else:
+            refiner = RefiningGeneral(data['resources_to_refining'], return_rate=data['return_rate'])
+        return refiner.calculator()

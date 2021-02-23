@@ -22,3 +22,10 @@ class ResourceListField(serializers.Serializer):
 
     def validate(self, data):
         return data
+
+
+class PricesList(serializers.Serializer):
+
+    tier = serializers.IntegerField(min_value=4, max_value=8, required=True)
+
+    value = serializers.IntegerField(required=True, min_value=0)

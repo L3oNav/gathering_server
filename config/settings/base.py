@@ -18,7 +18,9 @@ if READ_DOT_ENV_FILE:
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env.bool("DJANGO_DEBUG", False)
+#DEBUG = env.bool("DJANGO_DEBUG", True)
+DEBUG = True
+TEMPLATE_DEBUG = True
 # Local time zone. Choices are
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # though not all of them may be available with every OS.
@@ -64,7 +66,6 @@ DJANGO_APPS = [
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
-    "crispy_forms",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -195,7 +196,6 @@ TEMPLATES = [
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
-CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # FIXTURES
 # ------------------------------------------------------------------------------
@@ -272,8 +272,6 @@ SOCIALACCOUNT_ADAPTER = "gathering_server.users.adapters.SocialAccountAdapter"
 # django-compressor
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation
-INSTALLED_APPS += ["compressor"]
-STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # django-rest-framework
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/

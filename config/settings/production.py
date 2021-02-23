@@ -13,8 +13,8 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["example.com"])
-
+#ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["example.com"])
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 # DATABASES
 # ------------------------------------------------------------------------------
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
@@ -39,11 +39,11 @@ CACHES = {
 # SECURITY
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-proxy-ssl-header
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+#SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
-SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+#SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 # https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-secure
-SESSION_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-secure
 CSRF_COOKIE_SECURE = True
 # https://docs.djangoproject.com/en/dev/topics/security/#ssl-https
@@ -114,23 +114,6 @@ ANYMAIL = {
 
 # django-compressor
 # ------------------------------------------------------------------------------
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_ENABLED
-COMPRESS_ENABLED = env.bool("COMPRESS_ENABLED", default=True)
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_STORAGE
-COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_URL
-COMPRESS_URL = STATIC_URL  # noqa F405
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
-COMPRESS_OFFLINE = True  # Offline compression is required when using Whitenoise
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_FILTERS
-COMPRESS_FILTERS = {
-    "css": [
-        "compressor.filters.css_default.CssAbsoluteFilter",
-        "compressor.filters.cssmin.rCSSMinFilter",
-    ],
-    "js": ["compressor.filters.jsmin.JSMinFilter"],
-}
-
 # LOGGING
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging

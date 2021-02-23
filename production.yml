@@ -3,8 +3,7 @@ version: '3'
 volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
-  production_traefik: {}
-
+  production_caddy: {}
 services:
   django:
     build:
@@ -30,20 +29,14 @@ services:
     env_file:
       - ./.envs/.production/.postgres
 
-  traefik:
+  nginx:
     build:
       context: .
-      dockerfile: ./compose/production/traefik/Dockerfile
-    image: gathering_server_production_traefik
+      dockerfile: ./compose/production/nginx/Dockerfile
+    ports:
+      - 1337:80
     depends_on:
       - django
-    volumes:
-      - production_traefik:/etc/traefik/acme:z
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
 
   redis:
     image: redis:5.0
-
-  
