@@ -14,7 +14,6 @@ class RefiningCalculatorView(APIView):
     def post(self, request):
         data = request.data
         data['user'] = request.user.email
-        data['refining_prices'] = searchPrices(data['type_of'])
         serializer = RefiningCalculatorSerializer(data=data)
         if serializer.is_valid():
             response = serializer.save()

@@ -1,10 +1,13 @@
+
+
 class RefiningGeneral:
+
     def __init__(self, response, return_rate):
         self.resources = response[::-1]
         self.return_rate = return_rate
 
     def calculator(self):
-        refined = []
+        refined = {}
         for tier in self.resources:
             refined.append(self._refiner(tier))
         return refined
